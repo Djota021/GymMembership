@@ -1,20 +1,24 @@
 package gymapp.ui;
-import gymapp.model.Member;
+import java.awt.Font;
 import java.util.Date;
 
-import java.awt.Font;
-import javax.swing.JOptionPane;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import gymapp.db.DatabaseUtil;
+import gymapp.db.MemberDbRepository;
+import gymapp.model.Member;
+import gymapp.repository.FileRepository;
+import gymapp.util.SaveThread;
 import net.sourceforge.jdatepicker.impl.JDatePanelImpl;
 import net.sourceforge.jdatepicker.impl.JDatePickerImpl;
 import net.sourceforge.jdatepicker.impl.UtilDateModel;
@@ -22,6 +26,9 @@ import net.sourceforge.jdatepicker.impl.UtilDateModel;
 public class MemberForm {
 
     public static void main(String[] args) {
+    	
+    	DatabaseUtil.initDatabase();
+    	
         JFrame frame = new JFrame();
         frame.setTitle("Gym Membership - Đorđe Dević MIT14/25");
         frame.setSize(400, 600);
@@ -175,6 +182,13 @@ public class MemberForm {
 
             JOptionPane.showMessageDialog(frame,
                     "Member saved!\nTotal price: " + member.getTotalPrice() + " RSD");
+            
+            FileRepository<Member> repo = new FileRepository<>("members.dat");
+            SaveThread<Member> thread = new SaveThread<>(repo, member);
+            thread.start();
+            
+            MemberDbRepository dbRepo = new MemberDbRepository();
+            dbRepo.save(member);
         });
         
         frame.setVisible(true);

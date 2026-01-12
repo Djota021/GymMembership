@@ -32,4 +32,21 @@ public class Member extends Person {
     public int getTotalPrice() {
         return totalPrice;
     }
+    
+    public String getMembershipType() {
+        return membershipType;
+    }
+
+    public int getMonths() {
+        return months;
+    }
+
+    public java.util.Date getBirthDate() {
+        return birthDate;
+    }
+
+    public String getNote() {
+        return note;
+    }
+
 }

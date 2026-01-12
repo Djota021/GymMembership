@@ -23,4 +23,8 @@ public abstract class Person implements Serializable {
     public String getLastName() {
         return lastName;
     }
+    
+    public String getGender() {
+        return gender;
+    }
 }

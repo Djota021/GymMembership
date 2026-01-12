@@ -11,5 +11,6 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Korisnik/Desktop/sqlite-jdbc-3.51.1.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
