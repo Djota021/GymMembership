@@ -31,40 +31,46 @@ public class MemberForm {
     	
         JFrame frame = new JFrame();
         frame.setTitle("Gym Membership - Đorđe Dević MIT14/25");
-        frame.setSize(400, 600);
+        frame.setSize(480, 680);
+        frame.setLocationRelativeTo(null); 
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        JLabel lblTitle = new JLabel("Gym Membership Management", JLabel.CENTER);
+        lblTitle.setFont(new Font("Tahoma", Font.BOLD, 24));
+        lblTitle.setBounds(20, 15, 440, 40);
+        frame.add(lblTitle);
 
         JLabel lblFirstName = new JLabel("First Name:");
         lblFirstName.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        lblFirstName.setBounds(30, 30, 80, 20);
+        lblFirstName.setBounds(30, 90, 80, 20);
         frame.add(lblFirstName);
 
         JTextField txtFirstName = new JTextField();
-        txtFirstName.setBounds(120, 30, 200, 22);
+        txtFirstName.setBounds(120, 90, 200, 22);
         frame.add(txtFirstName);
         
         JLabel lblLastName = new JLabel("Last Name:");
         lblLastName.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        lblLastName.setBounds(30, 65, 80, 20);
+        lblLastName.setBounds(30, 120, 80, 20);
         frame.add(lblLastName);
 
         JTextField txtLastName = new JTextField();
-        txtLastName.setBounds(120, 65, 200, 22);
+        txtLastName.setBounds(120, 120, 200, 22);
         frame.add(txtLastName);
         
         JLabel lblGender = new JLabel("Gender:");
         lblGender.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        lblGender.setBounds(30, 100, 80, 20);
+        lblGender.setBounds(30, 150, 80, 20);
         frame.add(lblGender);
         
         JRadioButton rbMale = new JRadioButton("Male");
-        rbMale.setBounds(120, 100, 60, 22);
+        rbMale.setBounds(120, 150, 60, 22);
         rbMale.setSelected(true);
         frame.add(rbMale);
 
         JRadioButton rbFemale = new JRadioButton("Female");
-        rbFemale.setBounds(190, 100, 80, 22);
+        rbFemale.setBounds(190, 150, 80, 22);
         frame.add(rbFemale);
         
         ButtonGroup genderGroup = new ButtonGroup();
@@ -73,23 +79,23 @@ public class MemberForm {
         
         JLabel lblBirthDate = new JLabel("Date of Birth:");
         lblBirthDate.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        lblBirthDate.setBounds(30, 135, 80, 20);
+        lblBirthDate.setBounds(30, 185, 80, 20);
         frame.add(lblBirthDate);
         
         UtilDateModel model = new UtilDateModel();
         JDatePanelImpl datePanel = new JDatePanelImpl(model);
         JDatePickerImpl datePicker = new JDatePickerImpl(datePanel);
 
-        datePicker.setBounds(120, 135, 200, 25);
+        datePicker.setBounds(120, 185, 200, 25);
         frame.add(datePicker);
         
         JLabel lblMembership = new JLabel("Membership:");
         lblMembership.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        lblMembership.setBounds(30, 175, 80, 20);
+        lblMembership.setBounds(30, 225, 80, 20);
         frame.add(lblMembership);
         
         JSlider sliderFee = new JSlider(1, 12, 1);
-        sliderFee.setBounds(120, 210, 200, 45);
+        sliderFee.setBounds(120, 260, 200, 45);
         sliderFee.setMajorTickSpacing(1);
         sliderFee.setPaintTicks(true);
         sliderFee.setPaintLabels(true);
@@ -97,11 +103,11 @@ public class MemberForm {
         
         JLabel lblTotalPrice = new JLabel("Total price: 0 RSD");
         lblTotalPrice.setFont(new Font("Tahoma", Font.BOLD, 12));
-        lblTotalPrice.setBounds(120, 260, 220, 25);
+        lblTotalPrice.setBounds(120, 310, 220, 25);
         frame.add(lblTotalPrice);
         
         JComboBox<String> cmbMembership = new JComboBox<>();
-        cmbMembership.setBounds(120, 175, 200, 22);
+        cmbMembership.setBounds(120, 225, 200, 22);
 
         cmbMembership.addItem("Select");
         cmbMembership.addItem("Regular");
@@ -120,7 +126,7 @@ public class MemberForm {
 
         JLabel lblFee = new JLabel("Monthly Fee:");
         lblFee.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        lblFee.setBounds(30, 210, 80, 20);
+        lblFee.setBounds(30, 260, 80, 20);
         frame.add(lblFee);
         
         
@@ -133,20 +139,20 @@ public class MemberForm {
         });
         
         JCheckBox chkRules = new JCheckBox("I accept gym rules");
-        chkRules.setBounds(120, 295, 200, 22);
+        chkRules.setBounds(120, 345, 200, 22);
         frame.add(chkRules);
         
         JLabel lblNote = new JLabel("Note:");
         lblNote.setFont(new Font("Tahoma", Font.PLAIN, 11));
-        lblNote.setBounds(30, 330, 80, 20);
+        lblNote.setBounds(30, 380, 80, 20);
         frame.add(lblNote);
         
         JTextArea txtNote = new JTextArea();
-        txtNote.setBounds(120, 330, 200, 60);
+        txtNote.setBounds(120, 380, 200, 60);
         frame.add(txtNote);
         
         JButton btnSave = new JButton("Save Member");
-        btnSave.setBounds(120, 410, 200, 30);
+        btnSave.setBounds(120, 460, 200, 30);
         frame.add(btnSave);
         
         btnSave.addActionListener(e -> {
@@ -214,11 +220,11 @@ public class MemberForm {
         int total = basePrice * months;
 
         if (months >= 12) {
-            total *= 0.8; // 20% popusta
+            total *= 0.8; 
         } else if (months >= 6) {
-            total *= 0.9; // 10% popusta
+            total *= 0.9; 
         } else if (months >= 3) {
-            total *= 0.95; // 5% popusta
+            total *= 0.95; 
         }
 
         return total;
